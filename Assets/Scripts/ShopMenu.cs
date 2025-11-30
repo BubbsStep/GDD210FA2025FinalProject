@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -90,8 +91,14 @@ public class ShopMenu : MonoBehaviour
     private bool shotgunPath = false;
     //Booleans to track selected abilities
 
+    [SerializeField] private int primaryPrice = 10;
+    [SerializeField] private int magicPrice = 10;
+    [SerializeField] private int defensePrice = 10;
+
     static public List<string> Inventory = new List<string>();
     //Interacts with the Player Inventory across scenes
+
+    static public int playerCurrency;
 
     private void Start()
     {
@@ -208,22 +215,25 @@ public class ShopMenu : MonoBehaviour
         {
             primaryImage.sprite = excaliburImage.sprite;
             primaryDesc.text = excaliburDesc.text;
-            //Maybe add a primary price variable
+            primaryPrice = 300;
         }
         else if (PlayerInv.Inventory.Contains("Muramasa"))
         {
             primaryImage.sprite = excaliburImage.sprite;
             primaryDesc.text = excaliburDesc.text;
+            primaryPrice = 300;
         }
         else if (PlayerInv.Inventory.Contains("Estoc"))
         {
             primaryImage.sprite = muramasaImage.sprite;
             primaryDesc.text = muramasaDesc.text;
+            primaryPrice = 150;
         }
         else if (PlayerInv.Inventory.Contains("Shortsword"))
         {
             primaryImage.sprite = estocImage.sprite;
             primaryDesc.text = estocDesc.text;
+            primaryPrice = 50;
         }
 
         //Below is a series of checks to see what maces the player has already purchased
@@ -231,22 +241,25 @@ public class ShopMenu : MonoBehaviour
         {
             primaryImage.sprite = holyWaterSprinklerImage.sprite;
             primaryDesc.text = holyWaterSprinklerDesc.text;
-            //Maybe add a primary price variable
+            primaryPrice = 300;
         }
         else if (PlayerInv.Inventory.Contains("Morningstar"))
         {
             primaryImage.sprite = holyWaterSprinklerImage.sprite;
             primaryDesc.text = holyWaterSprinklerDesc.text;
+            primaryPrice = 300;
         }
         else if (PlayerInv.Inventory.Contains("Flail"))
         {
             primaryImage.sprite = morningstarImage.sprite;
             primaryDesc.text = morningstarDesc.text;
+            primaryPrice = 150;
         }
         else if (PlayerInv.Inventory.Contains("Mace"))
         {
             primaryImage.sprite = flailImage.sprite;
             primaryDesc.text = flailDesc.text;
+            primaryPrice = 50;
         }
 
         //Below is a series of checks to see what pistols the player has already purchased
@@ -254,22 +267,25 @@ public class ShopMenu : MonoBehaviour
         {
             primaryImage.sprite = aurumArgentumImage.sprite;
             primaryDesc.text = aurumArgentumDesc.text;
-            //Maybe add a primary price variable
+            primaryPrice = 300;
         }
         else if (PlayerInv.Inventory.Contains("BlessedBullets"))
         {
             primaryImage.sprite = aurumArgentumImage.sprite;
             primaryDesc.text = aurumArgentumDesc.text;
+            primaryPrice = 300;
         }
         else if (PlayerInv.Inventory.Contains("SilveredBullets"))
         {
             primaryImage.sprite = blessedBulletsImage.sprite;
             primaryDesc.text = blessedBulletsDesc.text;
+            primaryPrice = 150;
         }
         else if (PlayerInv.Inventory.Contains("Pistol"))
         {
             primaryImage.sprite = silveredBulletsImage.sprite;
             primaryDesc.text = silveredBulletsDesc.text;
+            primaryPrice = 50;
         }
 
         //Below is a series of checks to see what shotguns the player has already purchased
@@ -277,22 +293,25 @@ public class ShopMenu : MonoBehaviour
         {
             primaryImage.sprite = belzebubBreakActionImage.sprite;
             primaryDesc.text = belzebubBreakActionDesc.text;
-            //Maybe add a primary price variable
+            primaryPrice = 300;
         }
         else if (PlayerInv.Inventory.Contains("DemonDoubleBarrel"))
         {
             primaryImage.sprite = belzebubBreakActionImage.sprite;
             primaryDesc.text = belzebubBreakActionDesc.text;
+            primaryPrice = 300;
         }
         else if (PlayerInv.Inventory.Contains("BlessedShells"))
         {
             primaryImage.sprite = demonDoubleBarrelImage.sprite;
             primaryDesc.text = demonDoubleBarrelDesc.text;
+            primaryPrice = 150;
         }
         else if (PlayerInv.Inventory.Contains("Shotgun"))
         {
             primaryImage.sprite = blessedShellsImage.sprite;
             primaryDesc.text = blessedShellsDesc.text;
+            primaryPrice = 50;
         }
 
         //Below is a series of checks to see what magic the player has already purchased
@@ -300,27 +319,31 @@ public class ShopMenu : MonoBehaviour
         {
             magicImage.sprite = hearthOfHadesImage.sprite;
             magicDesc.text = hearthOfHadesDesc.text;
-            //Maybe add a primary price variable
+            magicPrice = 300;
         }
         else if (PlayerInv.Inventory.Contains("AresAmmoFrenzy"))
         {
             magicImage.sprite = hearthOfHadesImage.sprite;
             magicDesc.text = hearthOfHadesDesc.text;
+            magicPrice = 300;
         }
         else if (PlayerInv.Inventory.Contains("ElvenArrowEdge"))
         {
             magicImage.sprite = aresAmmoImage.sprite;
             magicDesc.text = aresAmmoDesc.text;
+            magicPrice = 150;
         }
         else if (PlayerInv.Inventory.Contains("FaeFirebolt"))
         {
             magicImage.sprite = elvenArrowImage.sprite;
             magicDesc.text = elvenArrowDesc.text;
+            magicPrice = 50;
         }
         else
         {
             magicImage.sprite = fireboltImage.sprite;
             magicDesc.text = fireboltDesc.text;
+            magicPrice = 10;
         }
 
         //Below is a series of checks to see what defense the player has already purchased
@@ -328,27 +351,31 @@ public class ShopMenu : MonoBehaviour
         {
             defenseImage.sprite = aegisImage.sprite;
             defenseDesc.text = aegisDesc.text;
-            //Maybe add a primary price variable
+            defensePrice = 300;
         }
         else if (PlayerInv.Inventory.Contains("SvalinShield"))
         {
             defenseImage.sprite = aegisImage.sprite;
             defenseDesc.text = aegisDesc.text;
+            defensePrice = 300;
         }
         else if (PlayerInv.Inventory.Contains("RiotShield"))
         {
             defenseImage.sprite = svalinShieldImage.sprite;
             defenseDesc.text = svalinShieldDesc.text;
+            defensePrice = 150;
         }
         else if (PlayerInv.Inventory.Contains("Armor"))
         {
             defenseImage.sprite = riotShieldImage.sprite;
             defenseDesc.text = riotShieldDesc.text;
+            defensePrice = 50;
         }
         else
         {
             defenseImage.sprite = armorImage.sprite;
             defenseDesc.text = armorDesc.text;
+            defensePrice = 10;
         }
     }
 
@@ -371,7 +398,11 @@ public class ShopMenu : MonoBehaviour
                 exitFrame.enabled = false;
                 exitDesc.enabled = false;
             }
-            //If Enter pressed, exit shop
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                SceneManager.LoadScene(0);
+            }
+            //If Enter pressed, exits shop
         }
         else if (primarySelected)
         {
@@ -392,8 +423,119 @@ public class ShopMenu : MonoBehaviour
                 primaryFrame.enabled = false;
                 primaryDesc.enabled = false;
             }
-            //If (ItemImage) == primaryImage && Enter is pressed && playerCurrency >= primaryPrice, then PlayerInv.Inventory.Add("Item");
+            if (PlayerInv.playerCurrency >= primaryPrice && Input.GetKeyDown(KeyCode.E))
+            {
+                if (primaryImage.sprite == estocImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("Estoc");
+                    //Adds estoc to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= primaryPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (primaryImage.sprite == muramasaImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("Muramasa");
+                    //Adds muramasa to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= primaryPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (primaryImage.sprite == excaliburImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("Excalibur");
+                    //Adds excalibur to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= primaryPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (primaryImage.sprite == flailImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("Flail");
+                    //Adds flail to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= primaryPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (primaryImage.sprite == morningstarImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("Morningstar");
+                    //Adds morningstar to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= primaryPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (primaryImage.sprite == holyWaterSprinklerImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("HolyWaterSprinkler");
+                    //Adds holy water sprinkler to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= primaryPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (primaryImage.sprite == silveredBulletsImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("SilveredBullets");
+                    //Adds silver bullets to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= primaryPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (primaryImage.sprite == blessedBulletsImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("BlessedBullets");
+                    //Adds blessed bullets to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= primaryPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (primaryImage.sprite == aurumArgentumImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("AurumArgentum");
+                    //Adds aurum and argentum to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= primaryPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (primaryImage.sprite == blessedShellsImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("BlessedShells");
+                    //Adds blessed shells to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= primaryPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (primaryImage.sprite == demonDoubleBarrelImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("DemonDoubleBarrel");
+                    //Adds demon double barrel to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= primaryPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (primaryImage.sprite == belzebubBreakActionImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("BelzebubBreakAction");
+                    //Adds belzebub break action to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= primaryPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+            }
         }
+
         else if (magicSelected)
         {
             magicFrame.enabled = true;
@@ -420,8 +562,47 @@ public class ShopMenu : MonoBehaviour
                 magicFrame.enabled = false;
                 magicDesc.enabled = false;
             }
-            //If (ItemImage) == magicImage && Enter is pressed && playerCurrency >= magicPrice, then PlayerInv.Inventory.Add("Item");
+            if (PlayerInv.playerCurrency >= magicPrice && Input.GetKeyDown(KeyCode.E))
+            {
+                if (magicImage.sprite == fireboltImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("FaeFirebolt");
+                    //Adds fae firebolt to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= magicPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (magicImage.sprite == elvenArrowImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("ElvenArrowEdge");
+                    //Adds elven arrow edge to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= magicPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (magicImage.sprite == aresAmmoImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("AresAmmoFrenzy");
+                    //Adds ares ammo frenzy to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= magicPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (magicImage.sprite == hearthOfHadesImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("HearthOfHades");
+                    //Adds hearth of hades to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= magicPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+            }
         }
+
         else if (defenseSelected)
         {
             defenseFrame.enabled = true;
@@ -441,7 +622,45 @@ public class ShopMenu : MonoBehaviour
                 defenseFrame.enabled = false;
                 defenseDesc.enabled = false;
             }
-            //If (ItemImage) == magicImage && Enter is pressed && playerCurrency >= defensePrice, then PlayerInv.Inventory.Add("Item");
+            if (PlayerInv.playerCurrency >= defensePrice && Input.GetKeyDown(KeyCode.E))
+            {
+                if (defenseImage.sprite == armorImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("Armor");
+                    //Adds armor to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= defensePrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (defenseImage.sprite == riotShieldImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("RiotShield");
+                    //Adds riot shield to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= defensePrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (defenseImage.sprite == svalinShieldImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("SvalinShield");
+                    //Adds svalin shield to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= defensePrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (defenseImage.sprite == aegisImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("Aegis");
+                    //Adds aegis to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= defensePrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+            }
         }
     }
 
@@ -458,7 +677,11 @@ public class ShopMenu : MonoBehaviour
                 exitFrame.enabled = false;
                 startDesc.enabled = false;
             }
-            //If Enter pressed, exit shop
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                SceneManager.LoadScene(0);
+            }
+            //If Enter pressed, exits shop
         }
         else if (swordSelected)
         {
