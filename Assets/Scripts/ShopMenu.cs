@@ -425,10 +425,10 @@ public class ShopMenu : MonoBehaviour
             }
             if (PlayerInv.playerCurrency >= primaryPrice && Input.GetKeyDown(KeyCode.E))
             {
-                if (primaryImage.sprite == estocImage.sprite)
+                if (primaryImage.sprite == excaliburImage.sprite)
                 {
-                    PlayerInv.Inventory.Add("Estoc");
-                    //Adds estoc to inventory if the player has enough currency and presses E
+                    PlayerInv.Inventory.Add("Excalibur");
+                    //Adds excalibur to inventory if the player has enough currency and presses E
                     PlayerInv.playerCurrency -= primaryPrice;
                     //Removes currency from player
                     ResetNormalShopState();
@@ -443,19 +443,20 @@ public class ShopMenu : MonoBehaviour
                     ResetNormalShopState();
                     //Refreshes the shop to show the next available item
                 }
-                else if (primaryImage.sprite == excaliburImage.sprite)
+                else if (primaryImage.sprite == estocImage.sprite)
                 {
-                    PlayerInv.Inventory.Add("Excalibur");
-                    //Adds excalibur to inventory if the player has enough currency and presses E
+                    PlayerInv.Inventory.Add("Estoc");
+                    //Adds estoc to inventory if the player has enough currency and presses E
                     PlayerInv.playerCurrency -= primaryPrice;
                     //Removes currency from player
                     ResetNormalShopState();
                     //Refreshes the shop to show the next available item
                 }
-                else if (primaryImage.sprite == flailImage.sprite)
+
+                if (primaryImage.sprite == holyWaterSprinklerImage.sprite)
                 {
-                    PlayerInv.Inventory.Add("Flail");
-                    //Adds flail to inventory if the player has enough currency and presses E
+                    PlayerInv.Inventory.Add("HolyWaterSprinkler");
+                    //Adds holy water sprinkler to inventory if the player has enough currency and presses E
                     PlayerInv.playerCurrency -= primaryPrice;
                     //Removes currency from player
                     ResetNormalShopState();
@@ -470,19 +471,20 @@ public class ShopMenu : MonoBehaviour
                     ResetNormalShopState();
                     //Refreshes the shop to show the next available item
                 }
-                else if (primaryImage.sprite == holyWaterSprinklerImage.sprite)
+                else if (primaryImage.sprite == flailImage.sprite)
                 {
-                    PlayerInv.Inventory.Add("HolyWaterSprinkler");
-                    //Adds holy water sprinkler to inventory if the player has enough currency and presses E
+                    PlayerInv.Inventory.Add("Flail");
+                    //Adds flail to inventory if the player has enough currency and presses E
                     PlayerInv.playerCurrency -= primaryPrice;
                     //Removes currency from player
                     ResetNormalShopState();
                     //Refreshes the shop to show the next available item
                 }
-                else if (primaryImage.sprite == silveredBulletsImage.sprite)
+
+                if (primaryImage.sprite == aurumArgentumImage.sprite)
                 {
-                    PlayerInv.Inventory.Add("SilveredBullets");
-                    //Adds silver bullets to inventory if the player has enough currency and presses E
+                    PlayerInv.Inventory.Add("AurumArgentum");
+                    //Adds aurum and argentum to inventory if the player has enough currency and presses E
                     PlayerInv.playerCurrency -= primaryPrice;
                     //Removes currency from player
                     ResetNormalShopState();
@@ -497,19 +499,20 @@ public class ShopMenu : MonoBehaviour
                     ResetNormalShopState();
                     //Refreshes the shop to show the next available item
                 }
-                else if (primaryImage.sprite == aurumArgentumImage.sprite)
+                else if (primaryImage.sprite == silveredBulletsImage.sprite)
                 {
-                    PlayerInv.Inventory.Add("AurumArgentum");
-                    //Adds aurum and argentum to inventory if the player has enough currency and presses E
+                    PlayerInv.Inventory.Add("SilveredBullets");
+                    //Adds silver bullets to inventory if the player has enough currency and presses E
                     PlayerInv.playerCurrency -= primaryPrice;
                     //Removes currency from player
                     ResetNormalShopState();
                     //Refreshes the shop to show the next available item
                 }
-                else if (primaryImage.sprite == blessedShellsImage.sprite)
+
+                if (primaryImage.sprite == belzebubBreakActionImage.sprite)
                 {
-                    PlayerInv.Inventory.Add("BlessedShells");
-                    //Adds blessed shells to inventory if the player has enough currency and presses E
+                    PlayerInv.Inventory.Add("BelzebubBreakAction");
+                    //Adds belzebub break action to inventory if the player has enough currency and presses E
                     PlayerInv.playerCurrency -= primaryPrice;
                     //Removes currency from player
                     ResetNormalShopState();
@@ -524,10 +527,10 @@ public class ShopMenu : MonoBehaviour
                     ResetNormalShopState();
                     //Refreshes the shop to show the next available item
                 }
-                else if (primaryImage.sprite == belzebubBreakActionImage.sprite)
+                else if (primaryImage.sprite == blessedShellsImage.sprite)
                 {
-                    PlayerInv.Inventory.Add("BelzebubBreakAction");
-                    //Adds belzebub break action to inventory if the player has enough currency and presses E
+                    PlayerInv.Inventory.Add("BlessedShells");
+                    //Adds blessed shells to inventory if the player has enough currency and presses E
                     PlayerInv.playerCurrency -= primaryPrice;
                     //Removes currency from player
                     ResetNormalShopState();
@@ -564,19 +567,10 @@ public class ShopMenu : MonoBehaviour
             }
             if (PlayerInv.playerCurrency >= magicPrice && Input.GetKeyDown(KeyCode.E))
             {
-                if (magicImage.sprite == fireboltImage.sprite)
+                if (magicImage.sprite == hearthOfHadesImage.sprite)
                 {
-                    PlayerInv.Inventory.Add("FaeFirebolt");
-                    //Adds fae firebolt to inventory if the player has enough currency and presses E
-                    PlayerInv.playerCurrency -= magicPrice;
-                    //Removes currency from player
-                    ResetNormalShopState();
-                    //Refreshes the shop to show the next available item
-                }
-                else if (magicImage.sprite == elvenArrowImage.sprite)
-                {
-                    PlayerInv.Inventory.Add("ElvenArrowEdge");
-                    //Adds elven arrow edge to inventory if the player has enough currency and presses E
+                    PlayerInv.Inventory.Add("HearthOfHades");
+                    //Adds hearth of hades to inventory if the player has enough currency and presses E
                     PlayerInv.playerCurrency -= magicPrice;
                     //Removes currency from player
                     ResetNormalShopState();
@@ -591,10 +585,19 @@ public class ShopMenu : MonoBehaviour
                     ResetNormalShopState();
                     //Refreshes the shop to show the next available item
                 }
-                else if (magicImage.sprite == hearthOfHadesImage.sprite)
+                else if (magicImage.sprite == elvenArrowImage.sprite)
                 {
-                    PlayerInv.Inventory.Add("HearthOfHades");
-                    //Adds hearth of hades to inventory if the player has enough currency and presses E
+                    PlayerInv.Inventory.Add("ElvenArrowEdge");
+                    //Adds elven arrow edge to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= magicPrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (magicImage.sprite == fireboltImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("FaeFirebolt");
+                    //Adds fae firebolt to inventory if the player has enough currency and presses E
                     PlayerInv.playerCurrency -= magicPrice;
                     //Removes currency from player
                     ResetNormalShopState();
@@ -624,19 +627,10 @@ public class ShopMenu : MonoBehaviour
             }
             if (PlayerInv.playerCurrency >= defensePrice && Input.GetKeyDown(KeyCode.E))
             {
-                if (defenseImage.sprite == armorImage.sprite)
+                if (defenseImage.sprite == aegisImage.sprite)
                 {
-                    PlayerInv.Inventory.Add("Armor");
-                    //Adds armor to inventory if the player has enough currency and presses E
-                    PlayerInv.playerCurrency -= defensePrice;
-                    //Removes currency from player
-                    ResetNormalShopState();
-                    //Refreshes the shop to show the next available item
-                }
-                else if (defenseImage.sprite == riotShieldImage.sprite)
-                {
-                    PlayerInv.Inventory.Add("RiotShield");
-                    //Adds riot shield to inventory if the player has enough currency and presses E
+                    PlayerInv.Inventory.Add("Aegis");
+                    //Adds aegis to inventory if the player has enough currency and presses E
                     PlayerInv.playerCurrency -= defensePrice;
                     //Removes currency from player
                     ResetNormalShopState();
@@ -651,10 +645,19 @@ public class ShopMenu : MonoBehaviour
                     ResetNormalShopState();
                     //Refreshes the shop to show the next available item
                 }
-                else if (defenseImage.sprite == aegisImage.sprite)
+                else if (defenseImage.sprite == riotShieldImage.sprite)
                 {
-                    PlayerInv.Inventory.Add("Aegis");
-                    //Adds aegis to inventory if the player has enough currency and presses E
+                    PlayerInv.Inventory.Add("RiotShield");
+                    //Adds riot shield to inventory if the player has enough currency and presses E
+                    PlayerInv.playerCurrency -= defensePrice;
+                    //Removes currency from player
+                    ResetNormalShopState();
+                    //Refreshes the shop to show the next available item
+                }
+                else if (defenseImage.sprite == armorImage.sprite)
+                {
+                    PlayerInv.Inventory.Add("Armor");
+                    //Adds armor to inventory if the player has enough currency and presses E
                     PlayerInv.playerCurrency -= defensePrice;
                     //Removes currency from player
                     ResetNormalShopState();
