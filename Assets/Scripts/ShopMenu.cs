@@ -85,10 +85,10 @@ public class ShopMenu : MonoBehaviour
     private bool inStartingSelection = true;
     //Booleans to track selection states
 
-    private bool swordPath = false;
-    private bool macePath = false;
-    private bool pistolPath = false;
-    private bool shotgunPath = false;
+    [SerializeField] public bool swordPath = false;
+    [SerializeField] public bool macePath = false;
+    [SerializeField] public bool pistolPath = false;
+    [SerializeField] public bool shotgunPath = false;
     //Booleans to track selected abilities
 
     [SerializeField] private int primaryPrice = 10;
