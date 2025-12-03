@@ -48,7 +48,7 @@ namespace Blake
                 primaryImage.sprite = pistols[0].ItemSprite;
                 primaryCost.text = "$" + pistols[0].Cost.ToString();
             }
-            else if (PlayerInv.Inventory.Contains("Shotguns"))
+            else if (PlayerInv.Inventory.Contains("Shotgun"))
             {
                 primaryImage.sprite = shotguns[0].ItemSprite;
                 primaryCost.text = "$" + shotguns[0].Cost.ToString();
