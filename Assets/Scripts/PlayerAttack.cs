@@ -15,7 +15,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Collider demoShotgunCollider;
     [SerializeField] private SpriteRenderer demoShotgunSprite;
 
-    public int damage;
+    static public int damage;
     [SerializeField] private int excaliburDamage;
     [SerializeField] private int muramasaDamage;
     [SerializeField] private int estocDamage;
@@ -33,11 +33,26 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private int demonDoubleBarrelDamage;
     [SerializeField] private int belzebubBreakActionDamage;
 
-    public int magicCooldown;
+    static public int magicCooldown;
     [SerializeField] private int fireboltDamage;
+    [SerializeField] private Animator demoFireboltAnimator;
+    [SerializeField] private Collider demoFireboltCollider;
+    [SerializeField] private SpriteRenderer demoFireboltSprite;
+    [SerializeField] private ParticleSystem demoFireboltParticle;
     [SerializeField] private int elvenArrowDamage;
+    [SerializeField] private Animator demoElvenArrowAnimator;
+    [SerializeField] private Collider demoElvenArrowCollider;
+    [SerializeField] private SpriteRenderer demoElvenArrowSprite;
+    [SerializeField] private ParticleSystem demoElvenArrowParticle;
     [SerializeField] private int aresAmmoDamage;
+    [SerializeField] private Animator demoAresAmmoAnimator;
+    [SerializeField] private Collider demoAresAmmoCollider;
+    [SerializeField] private SpriteRenderer demoAresAmmoSprite;
+    [SerializeField] private ParticleSystem demoAresAmmoParticle;
     [SerializeField] private int hearthOfHadesDamage;
+    [SerializeField] private Animator demoHadesAnimator;
+    [SerializeField] private Collider demoHadesCollider;
+    [SerializeField] private MeshRenderer demoHadesRend;
 
 
     private bool isAttacking = false;
@@ -52,6 +67,17 @@ public class PlayerAttack : MonoBehaviour
         demoPistolSprite.enabled = false;
         demoShotgunCollider.enabled = false;
         demoShotgunSprite.enabled = false;
+        demoFireboltCollider.enabled = false;
+        demoFireboltSprite.enabled = false;
+        demoFireboltParticle.Stop();
+        demoElvenArrowCollider.enabled = false;
+        demoElvenArrowSprite.enabled = false;
+        demoElvenArrowParticle.Stop();
+        demoAresAmmoCollider.enabled = false;
+        demoAresAmmoSprite.enabled = false;
+        demoAresAmmoParticle.Stop();
+        demoHadesCollider.enabled = false;
+        demoHadesRend.enabled = false;
     }
 
 
@@ -209,6 +235,44 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
+        //All magic attacks
+        if (PlayerInv.Inventory.Contains("HearthOfHades"))
+        {
+            damage = hearthOfHadesDamage;
+            if (!isAttacking && Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Magic Attack");
+                StartHadesAttack();
+            }
+        }
+        else if (PlayerInv.Inventory.Contains("AresAmmoFrenzy"))
+        {
+            damage = aresAmmoDamage;
+            if (!isAttacking && Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Magic Attack");
+                StartAresAttack();
+            }
+        }
+        else if (PlayerInv.Inventory.Contains("ElvenArrowEdge"))
+        {
+            damage = elvenArrowDamage;
+            if (!isAttacking && Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Magic Attack");
+                StartElvenAttack();
+            }
+        }
+        else if (PlayerInv.Inventory.Contains("FaeFirebolt"))
+        {
+            damage = fireboltDamage;
+            if (!isAttacking && Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Magic Attack");
+                StartFireboltAttack();
+            }
+        }
+
     }
 
     private void StartSwordAttack()
@@ -263,6 +327,61 @@ public class PlayerAttack : MonoBehaviour
         demoShotgunAnimator.SetTrigger("ShotgunAttack");
     }
 
+    private void StartHadesAttack()
+    {
+        isAttacking = true;
+
+        // Reset the animator state so the animation always restarts
+        demoHadesAnimator.Rebind();
+        demoHadesAnimator.Update(0f);
+
+        demoHadesCollider.enabled = true;
+        demoHadesRend.enabled = true;
+        demoHadesAnimator.SetTrigger("MagicAttack");
+    }
+
+    private void StartAresAttack()
+    {
+        isAttacking = true;
+
+        // Reset the animator state so the animation always restarts
+        demoAresAmmoAnimator.Rebind();
+        demoAresAmmoAnimator.Update(0f);
+
+        demoAresAmmoCollider.enabled = true;
+        demoAresAmmoSprite.enabled = true;
+        demoAresAmmoParticle.Play();
+        demoAresAmmoAnimator.SetTrigger("MagicAttack");
+    }
+
+    private void StartElvenAttack()
+    {
+        isAttacking = true;
+
+        // Reset the animator state so the animation always restarts
+        demoElvenArrowAnimator.Rebind();
+        demoElvenArrowAnimator.Update(0f);
+
+        demoElvenArrowCollider.enabled = true;
+        demoElvenArrowSprite.enabled = true;
+        demoElvenArrowParticle.Play();
+        demoElvenArrowAnimator.SetTrigger("MagicAttack");
+    }
+
+    private void StartFireboltAttack()
+    {
+        isAttacking = true;
+
+        // Reset the animator state so the animation always restarts
+        demoFireboltAnimator.Rebind();
+        demoFireboltAnimator.Update(0f);
+
+        demoFireboltCollider.enabled = true;
+        demoFireboltSprite.enabled = true;
+        demoFireboltParticle.Play();
+        demoFireboltAnimator.SetTrigger("MagicAttack");
+    }
+
     // Called as animation events
     public void EndSwordAttack()
     {
@@ -292,4 +411,36 @@ public class PlayerAttack : MonoBehaviour
 
         isAttacking = false;
     }
+    public void EndHadesAttack()
+    {
+        demoHadesCollider.enabled = false;
+        demoHadesRend.enabled = false;
+
+        isAttacking = false;
+    }
+    public void EndAresAttack()
+    {
+        demoAresAmmoCollider.enabled = false;
+        demoAresAmmoSprite.enabled = false;
+        demoAresAmmoParticle.Stop();
+
+        isAttacking = false;
+    }
+    public void EndElvenAttack()
+    {
+        demoElvenArrowCollider.enabled = false;
+        demoElvenArrowSprite.enabled = false;
+        demoElvenArrowParticle.Stop();
+
+        isAttacking = false;
+    }
+    public void EndFireboltAttack()
+    {
+        demoFireboltCollider.enabled = false;
+        demoFireboltSprite.enabled = false;
+        demoFireboltParticle.Stop();
+
+        isAttacking = false;
+    }
+
 }
