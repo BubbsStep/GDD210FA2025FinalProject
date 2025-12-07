@@ -12,6 +12,6 @@ public class PlayerStats : MonoBehaviour
     {
         healthText.text = "Health: " + PlayerInv.playerHealth;
         currencyText.text = "Currency: $" + PlayerInv.playerCurrency;
-        cooldownText.text = "Magic Cooldown: " + PlayerAttack.magicCooldown;
+        cooldownText.text = "Magic Cooldown: " + Mathf.Ceil(PlayerAttack.magicCooldown);
     }
 }

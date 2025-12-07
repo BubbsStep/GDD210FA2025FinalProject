@@ -95,6 +95,10 @@ public class ShopMenu : MonoBehaviour
     [SerializeField] private int magicPrice = 10;
     [SerializeField] private int defensePrice = 10;
 
+    [SerializeField] private TextMeshProUGUI primaryPriceText;
+    [SerializeField] private TextMeshProUGUI magicPriceText;
+    [SerializeField] private TextMeshProUGUI defensePriceText;
+
     static public List<string> Inventory = new List<string>();
     //Interacts with the Player Inventory across scenes
 
@@ -173,6 +177,9 @@ public class ShopMenu : MonoBehaviour
         svalinShieldImage.enabled = false;
         aegisDesc.enabled = false;
         aegisImage.enabled = false;
+        primaryPriceText.enabled = false;
+        magicPriceText.enabled = false;
+        defensePriceText.enabled = false;
 
         // Detect if player already chose a starting ability
         swordPath = PlayerInv.Inventory.Contains("Shortsword");
@@ -204,6 +211,9 @@ public class ShopMenu : MonoBehaviour
             maceImage.enabled = false;
             pistolImage.enabled = false;
             shotgunImage.enabled = false;
+            primaryPriceText.enabled = true;
+            magicPriceText.enabled = true;
+            defensePriceText.enabled = true;
             NormalShop();
         }
     }
@@ -215,25 +225,29 @@ public class ShopMenu : MonoBehaviour
         {
             primaryImage.sprite = excaliburImage.sprite;
             primaryDesc.text = excaliburDesc.text;
-            primaryPrice = 300;
+            primaryPrice = 1000000000;
+            primaryPriceText.text = "Max!";
         }
         else if (PlayerInv.Inventory.Contains("Muramasa"))
         {
             primaryImage.sprite = excaliburImage.sprite;
             primaryDesc.text = excaliburDesc.text;
             primaryPrice = 300;
+            primaryPriceText.text = "$" + primaryPrice.ToString();
         }
         else if (PlayerInv.Inventory.Contains("Estoc"))
         {
             primaryImage.sprite = muramasaImage.sprite;
             primaryDesc.text = muramasaDesc.text;
             primaryPrice = 150;
+            primaryPriceText.text = "$" + primaryPrice.ToString();
         }
         else if (PlayerInv.Inventory.Contains("Shortsword"))
         {
             primaryImage.sprite = estocImage.sprite;
             primaryDesc.text = estocDesc.text;
             primaryPrice = 50;
+            primaryPriceText.text = "$" + primaryPrice.ToString();
         }
 
         //Below is a series of checks to see what maces the player has already purchased
@@ -241,25 +255,29 @@ public class ShopMenu : MonoBehaviour
         {
             primaryImage.sprite = holyWaterSprinklerImage.sprite;
             primaryDesc.text = holyWaterSprinklerDesc.text;
-            primaryPrice = 300;
+            primaryPrice = 1000000000;
+            primaryPriceText.text = "Max!";
         }
         else if (PlayerInv.Inventory.Contains("Morningstar"))
         {
             primaryImage.sprite = holyWaterSprinklerImage.sprite;
             primaryDesc.text = holyWaterSprinklerDesc.text;
             primaryPrice = 300;
+            primaryPriceText.text = "$" + primaryPrice.ToString();
         }
         else if (PlayerInv.Inventory.Contains("Flail"))
         {
             primaryImage.sprite = morningstarImage.sprite;
             primaryDesc.text = morningstarDesc.text;
             primaryPrice = 150;
+            primaryPriceText.text = "$" + primaryPrice.ToString();
         }
         else if (PlayerInv.Inventory.Contains("Mace"))
         {
             primaryImage.sprite = flailImage.sprite;
             primaryDesc.text = flailDesc.text;
             primaryPrice = 50;
+            primaryPriceText.text = "$" + primaryPrice.ToString();
         }
 
         //Below is a series of checks to see what pistols the player has already purchased
@@ -267,25 +285,29 @@ public class ShopMenu : MonoBehaviour
         {
             primaryImage.sprite = aurumArgentumImage.sprite;
             primaryDesc.text = aurumArgentumDesc.text;
-            primaryPrice = 300;
+            primaryPrice = 1000000000;
+            primaryPriceText.text = "Max!";
         }
         else if (PlayerInv.Inventory.Contains("BlessedBullets"))
         {
             primaryImage.sprite = aurumArgentumImage.sprite;
             primaryDesc.text = aurumArgentumDesc.text;
             primaryPrice = 300;
+            primaryPriceText.text = "$" + primaryPrice.ToString();
         }
         else if (PlayerInv.Inventory.Contains("SilveredBullets"))
         {
             primaryImage.sprite = blessedBulletsImage.sprite;
             primaryDesc.text = blessedBulletsDesc.text;
             primaryPrice = 150;
+            primaryPriceText.text = "$" + primaryPrice.ToString();
         }
         else if (PlayerInv.Inventory.Contains("Pistol"))
         {
             primaryImage.sprite = silveredBulletsImage.sprite;
             primaryDesc.text = silveredBulletsDesc.text;
             primaryPrice = 50;
+            primaryPriceText.text = "$" + primaryPrice.ToString();
         }
 
         //Below is a series of checks to see what shotguns the player has already purchased
@@ -293,25 +315,29 @@ public class ShopMenu : MonoBehaviour
         {
             primaryImage.sprite = belzebubBreakActionImage.sprite;
             primaryDesc.text = belzebubBreakActionDesc.text;
-            primaryPrice = 300;
+            primaryPrice = 1000000000;
+            primaryPriceText.text = "Max!";
         }
         else if (PlayerInv.Inventory.Contains("DemonDoubleBarrel"))
         {
             primaryImage.sprite = belzebubBreakActionImage.sprite;
             primaryDesc.text = belzebubBreakActionDesc.text;
             primaryPrice = 300;
+            primaryPriceText.text = "$" + primaryPrice.ToString();
         }
         else if (PlayerInv.Inventory.Contains("BlessedShells"))
         {
             primaryImage.sprite = demonDoubleBarrelImage.sprite;
             primaryDesc.text = demonDoubleBarrelDesc.text;
             primaryPrice = 150;
+            primaryPriceText.text = "$" + primaryPrice.ToString();
         }
         else if (PlayerInv.Inventory.Contains("Shotgun"))
         {
             primaryImage.sprite = blessedShellsImage.sprite;
             primaryDesc.text = blessedShellsDesc.text;
             primaryPrice = 50;
+            primaryPriceText.text = "$" + primaryPrice.ToString();
         }
 
         //Below is a series of checks to see what magic the player has already purchased
@@ -319,31 +345,36 @@ public class ShopMenu : MonoBehaviour
         {
             magicImage.sprite = hearthOfHadesImage.sprite;
             magicDesc.text = hearthOfHadesDesc.text;
-            magicPrice = 300;
+            magicPrice = 1000000000;
+            magicPriceText.text = "Max!";
         }
         else if (PlayerInv.Inventory.Contains("AresAmmoFrenzy"))
         {
             magicImage.sprite = hearthOfHadesImage.sprite;
             magicDesc.text = hearthOfHadesDesc.text;
             magicPrice = 300;
+            magicPriceText.text = "$" + magicPrice.ToString();
         }
         else if (PlayerInv.Inventory.Contains("ElvenArrowEdge"))
         {
             magicImage.sprite = aresAmmoImage.sprite;
             magicDesc.text = aresAmmoDesc.text;
             magicPrice = 150;
+            magicPriceText.text = "$" + magicPrice.ToString();
         }
         else if (PlayerInv.Inventory.Contains("FaeFirebolt"))
         {
             magicImage.sprite = elvenArrowImage.sprite;
             magicDesc.text = elvenArrowDesc.text;
             magicPrice = 50;
+            magicPriceText.text = "$" + magicPrice.ToString();
         }
         else
         {
             magicImage.sprite = fireboltImage.sprite;
             magicDesc.text = fireboltDesc.text;
             magicPrice = 10;
+            magicPriceText.text = "$" + magicPrice.ToString();
         }
 
         //Below is a series of checks to see what defense the player has already purchased
@@ -351,31 +382,36 @@ public class ShopMenu : MonoBehaviour
         {
             defenseImage.sprite = aegisImage.sprite;
             defenseDesc.text = aegisDesc.text;
-            defensePrice = 300;
+            defensePrice = 1000000000;
+            defensePriceText.text = "Max!";
         }
         else if (PlayerInv.Inventory.Contains("SvalinShield"))
         {
             defenseImage.sprite = aegisImage.sprite;
             defenseDesc.text = aegisDesc.text;
             defensePrice = 300;
+            defensePriceText.text = "$" + defensePrice.ToString();
         }
         else if (PlayerInv.Inventory.Contains("RiotShield"))
         {
             defenseImage.sprite = svalinShieldImage.sprite;
             defenseDesc.text = svalinShieldDesc.text;
             defensePrice = 150;
+            defensePriceText.text = "$" + defensePrice.ToString();
         }
         else if (PlayerInv.Inventory.Contains("Armor"))
         {
             defenseImage.sprite = riotShieldImage.sprite;
             defenseDesc.text = riotShieldDesc.text;
             defensePrice = 50;
+            defensePriceText.text = "$" + defensePrice.ToString();
         }
         else
         {
             defenseImage.sprite = armorImage.sprite;
             defenseDesc.text = armorDesc.text;
             defensePrice = 10;
+            defensePriceText.text = "$" + defensePrice.ToString();
         }
     }
 

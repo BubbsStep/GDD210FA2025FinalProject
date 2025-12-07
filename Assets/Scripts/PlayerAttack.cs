@@ -33,7 +33,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private int demonDoubleBarrelDamage;
     [SerializeField] private int belzebubBreakActionDamage;
 
-    static public int magicCooldown;
+    static public float magicCooldown;
+    [SerializeField] private float fireboltCooldown;
+    [SerializeField] private float elvenArrowCooldown;
+    [SerializeField] private float aresAmmoCooldown;
+    [SerializeField] private float hadesCooldown;
     [SerializeField] private int fireboltDamage;
     [SerializeField] private Animator demoFireboltAnimator;
     [SerializeField] private Collider demoFireboltCollider;
@@ -239,38 +243,48 @@ public class PlayerAttack : MonoBehaviour
         if (PlayerInv.Inventory.Contains("HearthOfHades"))
         {
             damage = hearthOfHadesDamage;
-            if (!isAttacking && Input.GetKeyDown(KeyCode.E))
+            if (!isAttacking && magicCooldown <= 0f && Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("Magic Attack");
+                magicCooldown = hadesCooldown;
                 StartHadesAttack();
             }
         }
         else if (PlayerInv.Inventory.Contains("AresAmmoFrenzy"))
         {
             damage = aresAmmoDamage;
-            if (!isAttacking && Input.GetKeyDown(KeyCode.E))
+            if (!isAttacking && magicCooldown <= 0f && Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("Magic Attack");
+                magicCooldown = aresAmmoCooldown;
                 StartAresAttack();
             }
         }
         else if (PlayerInv.Inventory.Contains("ElvenArrowEdge"))
         {
             damage = elvenArrowDamage;
-            if (!isAttacking && Input.GetKeyDown(KeyCode.E))
+            if (!isAttacking && magicCooldown <= 0f && Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("Magic Attack");
+                magicCooldown = elvenArrowCooldown;
                 StartElvenAttack();
             }
         }
         else if (PlayerInv.Inventory.Contains("FaeFirebolt"))
         {
             damage = fireboltDamage;
-            if (!isAttacking && Input.GetKeyDown(KeyCode.E))
+            if (!isAttacking && magicCooldown <= 0f && Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("Magic Attack");
+                magicCooldown = fireboltCooldown;
                 StartFireboltAttack();
             }
+        }
+
+        //Magic cooldown
+        if (magicCooldown > 0f)
+        {
+            magicCooldown -= Time.deltaTime;
         }
 
     }
@@ -423,6 +437,8 @@ public class PlayerAttack : MonoBehaviour
         demoAresAmmoCollider.enabled = false;
         demoAresAmmoSprite.enabled = false;
         demoAresAmmoParticle.Stop();
+        demoAresAmmoParticle.Clear();
+        //Stops emmitting particles & clears all emmitted particles
 
         isAttacking = false;
     }
@@ -431,6 +447,8 @@ public class PlayerAttack : MonoBehaviour
         demoElvenArrowCollider.enabled = false;
         demoElvenArrowSprite.enabled = false;
         demoElvenArrowParticle.Stop();
+        demoElvenArrowParticle.Clear();
+        //Stops emmitting particles & clears all emmitted particles
 
         isAttacking = false;
     }
@@ -439,6 +457,8 @@ public class PlayerAttack : MonoBehaviour
         demoFireboltCollider.enabled = false;
         demoFireboltSprite.enabled = false;
         demoFireboltParticle.Stop();
+        demoFireboltParticle.Clear();
+        //Stops emmitting particles & clears all emmitted particles
 
         isAttacking = false;
     }

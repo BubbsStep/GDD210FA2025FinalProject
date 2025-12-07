@@ -7,6 +7,8 @@ public class SimpleHomingEnemy : MonoBehaviour
     public int maxHealth = 10;
     public int damage = 10;
 
+    [SerializeField] private int rewardMoney;
+
     private int currentHealth;
     private Transform player;
 
@@ -33,9 +35,9 @@ public class SimpleHomingEnemy : MonoBehaviour
 
             //Flip sprite based on direction
             if (direction.x < 0)
-                enemyRend.flipX = true;
-            else
                 enemyRend.flipX = false;
+            else
+                enemyRend.flipX = true;
         }
 
         // i-frame countdown
@@ -84,7 +86,7 @@ public class SimpleHomingEnemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            PlayerInv.playerCurrency += 10;
+            PlayerInv.playerCurrency += rewardMoney;
             //Gives the player money for defeating the enemy
             Destroy(gameObject);
         }

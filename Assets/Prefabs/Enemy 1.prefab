@@ -136,8 +136,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.5321588}
-  m_Center: {x: 0, y: 0, z: 0.0012149184}
+  m_Size: {x: 0.9070339, y: 0.85076994, z: 0.5321588}
+  m_Center: {x: -0.0002533595, y: -0.0040716333, z: 0.0012149215}
 --- !u!114 &6994086645444311010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   maxHealth: 10
-  damage: 1
+  damage: 3
+  rewardMoney: 15
   iFrameDuration: 0.2
   enemyRend: {fileID: 6101285160534611868}
 --- !u!1 &8248705541435240425
