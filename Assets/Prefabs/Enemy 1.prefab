@@ -136,8 +136,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9070339, y: 0.85076994, z: 0.5321588}
-  m_Center: {x: -0.0002533595, y: -0.0040716333, z: 0.0012149215}
+  m_Size: {x: 0.4861936, y: 0.85076994, z: 0.5321588}
+  m_Center: {x: 0.008689126, y: -0.0040716333, z: 0.0012149215}
 --- !u!114 &6994086645444311010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6294473602886700118}
   - component: {fileID: 6101285160534611868}
+  - component: {fileID: 3970210699786406503}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -183,7 +184,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 745556390893527662}
@@ -232,7 +233,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8d2ec42eaf1e3814e83e6217ffd36a06, type: 3}
+  m_Sprite: {fileID: 77647291, guid: bcad7630ac1e2744abf43aea866a9458, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -243,3 +244,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3970210699786406503
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8248705541435240425}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3484fb77a5bd4e64484a3f401d41ee97, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
