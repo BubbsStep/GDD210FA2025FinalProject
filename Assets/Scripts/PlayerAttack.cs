@@ -11,9 +11,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Animator demoPistolAnimator;
     [SerializeField] private Collider demoPistolCollider;
     [SerializeField] private SpriteRenderer demoPistolSprite;
+    [SerializeField] private ParticleSystem demoPistolParticle;
     [SerializeField] private Animator demoShotgunAnimator;
     [SerializeField] private Collider demoShotgunCollider;
     [SerializeField] private SpriteRenderer demoShotgunSprite;
+    [SerializeField] private ParticleSystem demoShotgunParticle;
 
     static public int damage;
     [SerializeField] private int excaliburDamage;
@@ -33,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private int demonDoubleBarrelDamage;
     [SerializeField] private int belzebubBreakActionDamage;
 
-    static public float magicCooldown;
+    [SerializeField] static public float magicCooldown;
     [SerializeField] private float fireboltCooldown;
     [SerializeField] private float elvenArrowCooldown;
     [SerializeField] private float aresAmmoCooldown;
@@ -69,8 +71,10 @@ public class PlayerAttack : MonoBehaviour
         demoMaceSprite.enabled = false;
         demoPistolCollider.enabled = false;
         demoPistolSprite.enabled = false;
+        demoPistolParticle.Stop();
         demoShotgunCollider.enabled = false;
         demoShotgunSprite.enabled = false;
+        demoShotgunParticle.Stop();
         demoFireboltCollider.enabled = false;
         demoFireboltSprite.enabled = false;
         demoFireboltParticle.Stop();
@@ -325,6 +329,7 @@ public class PlayerAttack : MonoBehaviour
 
         demoPistolCollider.enabled = true;
         demoPistolSprite.enabled = true;
+        demoPistolParticle.Play();
         demoPistolAnimator.SetTrigger("PistolAttack");
     }
 
@@ -338,6 +343,7 @@ public class PlayerAttack : MonoBehaviour
 
         demoShotgunCollider.enabled = true;
         demoShotgunSprite.enabled = true;
+        demoShotgunParticle.Play();
         demoShotgunAnimator.SetTrigger("ShotgunAttack");
     }
 
@@ -415,6 +421,7 @@ public class PlayerAttack : MonoBehaviour
     {
         demoPistolCollider.enabled = false;
         demoPistolSprite.enabled = false;
+        demoPistolParticle.Stop();
 
         isAttacking = false;
     }
@@ -422,6 +429,7 @@ public class PlayerAttack : MonoBehaviour
     {
         demoShotgunCollider.enabled = false;
         demoShotgunSprite.enabled = false;
+        demoShotgunParticle.Stop();
 
         isAttacking = false;
     }
