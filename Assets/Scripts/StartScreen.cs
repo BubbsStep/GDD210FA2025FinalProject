@@ -9,6 +9,7 @@ public class StartScreen : MonoBehaviour
         {
             PlayerInv.playerHealth = 50;
             PlayerInv.playerCurrency = 100;
+            PlayerInv.playerDefense = 0;
             PlayerInv.Inventory.Add("Level1");
             SceneManager.LoadScene("Level1");
         }

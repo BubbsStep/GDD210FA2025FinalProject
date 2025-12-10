@@ -452,6 +452,10 @@ public class ShopMenu : MonoBehaviour
                 {
                     SceneManager.LoadScene("Level1");
                 }
+                else
+                {
+                    SceneManager.LoadScene("Level1");
+                }
             }
             //If Enter pressed, exits shop and returns player to the appropriate scene
         }
