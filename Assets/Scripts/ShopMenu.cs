@@ -436,9 +436,24 @@ public class ShopMenu : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
-                SceneManager.LoadScene(0);
+                if (PlayerInv.Inventory.Contains("LevelBoss"))
+                {
+                    SceneManager.LoadScene("LevelBoss");
+                }
+                else if (PlayerInv.Inventory.Contains("Level3"))
+                {
+                    SceneManager.LoadScene("Level3");
+                }
+                else if (PlayerInv.Inventory.Contains("Level2"))
+                {
+                    SceneManager.LoadScene("Level2");
+                }
+                else if (PlayerInv.Inventory.Contains("Level1"))
+                {
+                    SceneManager.LoadScene("Level1");
+                }
             }
-            //If Enter pressed, exits shop
+            //If Enter pressed, exits shop and returns player to the appropriate scene
         }
         else if (primarySelected)
         {
@@ -718,9 +733,24 @@ public class ShopMenu : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
-                SceneManager.LoadScene(0);
+                if (PlayerInv.Inventory.Contains("LevelBoss"))
+                {
+                    SceneManager.LoadScene("LevelBoss");
+                }
+                else if (PlayerInv.Inventory.Contains("Level3"))
+                {
+                    SceneManager.LoadScene("Level3");
+                }
+                else if(PlayerInv.Inventory.Contains("Level2"))
+                {
+                    SceneManager.LoadScene("Level2");
+                }
+                else if (PlayerInv.Inventory.Contains("Level1"))
+                {
+                    SceneManager.LoadScene("Level1");
+                }
             }
-            //If Enter pressed, exits shop
+            //If Enter pressed, exits shop and returns player to the appropriate scene
         }
         else if (swordSelected)
         {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerIFrames : MonoBehaviour
 {
@@ -51,7 +52,8 @@ public class PlayerIFrames : MonoBehaviour
 
         if (PlayerInv.playerHealth <= 0)
         {
-            Destroy(gameObject);
+            PlayerInv.Inventory.Clear();
+            SceneManager.LoadScene("GameOver");
         }
     }
 }

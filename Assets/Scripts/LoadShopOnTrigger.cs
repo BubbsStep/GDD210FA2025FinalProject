@@ -25,7 +25,7 @@ public class LoadShopOnTrigger : MonoBehaviour
         }
         if (playerInside && Input.GetKeyDown(KeyCode.E))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("ShopScene");
         }
     }
 
