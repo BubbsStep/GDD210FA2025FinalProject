@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  maxHealth: 5
+  maxHealth: 10
   damage: 6
   rewardMoney: 30
   iFrameDuration: 0.2
