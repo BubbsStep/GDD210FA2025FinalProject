@@ -7,6 +7,8 @@ public class PlayerIFrames : MonoBehaviour
     private bool isInvincible = false;
     private float iFrameTimer = 0f;
 
+    [SerializeField] public AudioSource hurtSound;
+
     [SerializeField] private SpriteRenderer playerRend;
     private Color originalColor = Color.white;
 
@@ -42,6 +44,8 @@ public class PlayerIFrames : MonoBehaviour
         if (isInvincible) return;
 
         Debug.Log("TakeDamage called");
+        hurtSound.volume = 1000;
+        hurtSound.Play();
 
         Vector3 knockDir = (transform.position - enemy.transform.position).normalized;
         transform.position += knockDir * 1f;

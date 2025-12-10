@@ -152,9 +152,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   maxHealth: 20
-  damage: 3
+  damage: 5
   rewardMoney: 15
-  iFrameDuration: 0.2
+  iFrameDuration: 0.5
   enemyRend: {fileID: 6101285160534611868}
 --- !u!1 &8248705541435240425
 GameObject:
