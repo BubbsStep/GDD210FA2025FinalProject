@@ -59,13 +59,17 @@ public class SimpleHomingEnemy : MonoBehaviour
         {
             TakeDamage(PlayerAttack.damage);
         }
+        if (other.CompareTag("Shield"))
+        {
+            TakeDamage(0);
+        }
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerInv.playerHealth -= damage;
+            PlayerInv.playerHealth -= (damage - PlayerInv.playerDefense);
         }
     }
 

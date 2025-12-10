@@ -18,12 +18,12 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.anyKey)
         {
-            playerAnimator.SetTrigger("Walk");
+            //playerAnimator.SetTrigger("Walk");
             playerAnimator.Play("PlayerWalk");
         }
         else
         {
-            playerAnimator.SetTrigger("Idle");
+            //playerAnimator.SetTrigger("Idle");
             playerAnimator.Play("PlayerIdle");
         }
 

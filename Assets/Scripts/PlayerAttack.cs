@@ -91,6 +91,17 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        //Debugging to check inventory contents
+        if (Input.GetMouseButtonDown(0))
+        {
+            string s = "Inventory: \n";
+            foreach (var item in PlayerInv.Inventory)
+            {
+                s += item + "\n";
+            }
+            Debug.Log(s);
+        }
+
         //All sword attacks
         if (PlayerInv.Inventory.Contains("Excalibur"))
         {

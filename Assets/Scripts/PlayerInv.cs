@@ -11,9 +11,7 @@ public class PlayerInv : MonoBehaviour
 
     static public int playerHealth = 50;
 
-    static public List<Blake.Item> Swords => Blake.Shop.swords;
-    [SerializeField] private List<Blake.Item> swords = new List<Blake.Item>();
-
+    static public int playerDefense = 0;
 
     void Awake()
     {
