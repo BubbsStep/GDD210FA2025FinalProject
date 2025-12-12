@@ -17,6 +17,19 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private SpriteRenderer demoShotgunSprite;
     [SerializeField] private ParticleSystem demoShotgunParticle;
 
+    // --- AUDIO ---
+    [Header("Attack SFX")]
+    [SerializeField] private AudioSource sfxSource;   // shared audio source
+    [SerializeField] private AudioClip swordSFX;
+    [SerializeField] private AudioClip maceSFX;
+    [SerializeField] private AudioClip pistolSFX;
+    [SerializeField] private AudioClip shotgunSFX;
+    [SerializeField] private AudioClip hadesSFX;
+    [SerializeField] private AudioClip aresSFX;
+    [SerializeField] private AudioClip elvenSFX;
+    [SerializeField] private AudioClip fireboltSFX;
+    // -------------
+
     static public int damage;
     [SerializeField] private int excaliburDamage;
     [SerializeField] private int muramasaDamage;
@@ -60,7 +73,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Collider demoHadesCollider;
     [SerializeField] private MeshRenderer demoHadesRend;
 
-
     private bool isAttacking = false;
 
     private void Start()
@@ -86,8 +98,14 @@ public class PlayerAttack : MonoBehaviour
         demoAresAmmoParticle.Stop();
         demoHadesCollider.enabled = false;
         demoHadesRend.enabled = false;
-    }
 
+        // make sure SFX source doesn't auto-play / loop
+        if (sfxSource != null)
+        {
+            sfxSource.playOnAwake = false;
+            sfxSource.loop = false;
+        }
+    }
 
     void Update()
     {
@@ -112,7 +130,7 @@ public class PlayerAttack : MonoBehaviour
                 StartSwordAttack();
             }
         }
-        else if(PlayerInv.Inventory.Contains("Muramasa"))
+        else if (PlayerInv.Inventory.Contains("Muramasa"))
         {
             damage = muramasaDamage;
             if (!isAttacking && Input.GetMouseButtonDown(0))
@@ -304,37 +322,47 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
+    // Small helper to avoid repeating logic
+    private void PlayAttackSFX(AudioClip clip)
+    {
+        if (sfxSource != null && clip != null)
+        {
+            sfxSource.PlayOneShot(clip);
+        }
+    }
+
     private void StartSwordAttack()
     {
         isAttacking = true;
 
-        // Reset the animator state so the animation always restarts
         demoSwordAnimator.Rebind();
         demoSwordAnimator.Update(0f);
 
         demoSwordCollider.enabled = true;
         demoSwordSprite.enabled = true;
         demoSwordAnimator.SetTrigger("SwordAttack");
+
+        PlayAttackSFX(swordSFX);
     }
 
     private void StartMaceAttack()
     {
         isAttacking = true;
 
-        // Reset the animator state so the animation always restarts
         demoMaceAnimator.Rebind();
         demoMaceAnimator.Update(0f);
 
         demoMaceCollider.enabled = true;
         demoMaceSprite.enabled = true;
         demoMaceAnimator.SetTrigger("MaceAttack");
+
+        PlayAttackSFX(maceSFX);
     }
 
     private void StartPistolAttack()
     {
         isAttacking = true;
 
-        // Reset the animator state so the animation always restarts
         demoPistolAnimator.Rebind();
         demoPistolAnimator.Update(0f);
 
@@ -342,13 +370,14 @@ public class PlayerAttack : MonoBehaviour
         demoPistolSprite.enabled = true;
         demoPistolParticle.Play();
         demoPistolAnimator.SetTrigger("PistolAttack");
+
+        PlayAttackSFX(pistolSFX);
     }
 
     private void StartShotgunAttack()
     {
         isAttacking = true;
 
-        // Reset the animator state so the animation always restarts
         demoShotgunAnimator.Rebind();
         demoShotgunAnimator.Update(0f);
 
@@ -356,26 +385,28 @@ public class PlayerAttack : MonoBehaviour
         demoShotgunSprite.enabled = true;
         demoShotgunParticle.Play();
         demoShotgunAnimator.SetTrigger("ShotgunAttack");
+
+        PlayAttackSFX(shotgunSFX);
     }
 
     private void StartHadesAttack()
     {
         isAttacking = true;
 
-        // Reset the animator state so the animation always restarts
         demoHadesAnimator.Rebind();
         demoHadesAnimator.Update(0f);
 
         demoHadesCollider.enabled = true;
         demoHadesRend.enabled = true;
         demoHadesAnimator.SetTrigger("MagicAttack");
+
+        PlayAttackSFX(hadesSFX);
     }
 
     private void StartAresAttack()
     {
         isAttacking = true;
 
-        // Reset the animator state so the animation always restarts
         demoAresAmmoAnimator.Rebind();
         demoAresAmmoAnimator.Update(0f);
 
@@ -383,13 +414,14 @@ public class PlayerAttack : MonoBehaviour
         demoAresAmmoSprite.enabled = true;
         demoAresAmmoParticle.Play();
         demoAresAmmoAnimator.SetTrigger("MagicAttack");
+
+        PlayAttackSFX(aresSFX);
     }
 
     private void StartElvenAttack()
     {
         isAttacking = true;
 
-        // Reset the animator state so the animation always restarts
         demoElvenArrowAnimator.Rebind();
         demoElvenArrowAnimator.Update(0f);
 
@@ -397,13 +429,14 @@ public class PlayerAttack : MonoBehaviour
         demoElvenArrowSprite.enabled = true;
         demoElvenArrowParticle.Play();
         demoElvenArrowAnimator.SetTrigger("MagicAttack");
+
+        PlayAttackSFX(elvenSFX);
     }
 
     private void StartFireboltAttack()
     {
         isAttacking = true;
 
-        // Reset the animator state so the animation always restarts
         demoFireboltAnimator.Rebind();
         demoFireboltAnimator.Update(0f);
 
@@ -411,6 +444,8 @@ public class PlayerAttack : MonoBehaviour
         demoFireboltSprite.enabled = true;
         demoFireboltParticle.Play();
         demoFireboltAnimator.SetTrigger("MagicAttack");
+
+        PlayAttackSFX(fireboltSFX);
     }
 
     // Called as animation events
@@ -457,7 +492,6 @@ public class PlayerAttack : MonoBehaviour
         demoAresAmmoSprite.enabled = false;
         demoAresAmmoParticle.Stop();
         demoAresAmmoParticle.Clear();
-        //Stops emmitting particles & clears all emmitted particles
 
         isAttacking = false;
     }
@@ -467,7 +501,6 @@ public class PlayerAttack : MonoBehaviour
         demoElvenArrowSprite.enabled = false;
         demoElvenArrowParticle.Stop();
         demoElvenArrowParticle.Clear();
-        //Stops emmitting particles & clears all emmitted particles
 
         isAttacking = false;
     }
@@ -477,9 +510,7 @@ public class PlayerAttack : MonoBehaviour
         demoFireboltSprite.enabled = false;
         demoFireboltParticle.Stop();
         demoFireboltParticle.Clear();
-        //Stops emmitting particles & clears all emmitted particles
 
         isAttacking = false;
     }
-
 }

@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+﻿using Unity.VisualScripting;
 using UnityEngine;
 
 public class SimpleHomingEnemy : MonoBehaviour
@@ -19,6 +19,10 @@ public class SimpleHomingEnemy : MonoBehaviour
     [SerializeField] private SpriteRenderer enemyRend;
     private Color originalColor = Color.white;
 
+    [Header("Audio")]
+    public AudioSource audioSource;     // Drag AudioSource here
+    public AudioClip damageSFX;         // Drag sound clip here
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -27,20 +31,17 @@ public class SimpleHomingEnemy : MonoBehaviour
 
     void Update()
     {
-        // movement
         if (player != null && !isInvincible)
         {
             Vector3 direction = (player.position - transform.position).normalized;
             transform.position += direction * speed * Time.deltaTime;
 
-            //Flip sprite based on direction
             if (direction.x < 0)
                 enemyRend.flipX = false;
             else
                 enemyRend.flipX = true;
         }
 
-        // i-frame countdown
         if (isInvincible)
         {
             iFrameTimer -= Time.deltaTime;
@@ -79,11 +80,15 @@ public class SimpleHomingEnemy : MonoBehaviour
 
         currentHealth -= amount;
 
+        // 🔊 Play damage SFX
+        if (damageSFX != null && audioSource != null)
+            audioSource.PlayOneShot(damageSFX);
+
         // Knockback
         Vector3 knockDir = (transform.position - player.position).normalized;
         transform.position += knockDir * 1f;
 
-        // Turn red and start invincible timer
+        // Flash red + invincibility
         enemyRend.color = Color.red;
         isInvincible = true;
         iFrameTimer = iFrameDuration;
@@ -91,7 +96,6 @@ public class SimpleHomingEnemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             PlayerInv.playerCurrency += rewardMoney;
-            //Gives the player money for defeating the enemy
             Destroy(gameObject);
         }
     }
